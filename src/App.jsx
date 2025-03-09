@@ -15,6 +15,10 @@ function App() {
     return new_arr
   }
 
+  function rollDice() {
+    setNumbers(generateAllNewDice)
+  }
+
   const newDie = numbers.map((number) => <Die value={number}/>)
 
 
@@ -24,6 +28,8 @@ function App() {
       <div className="die-container">
         {newDie}
       </div>
+
+      <button class="roll-dice" onClick={rollDice}>Roll Dice</button>
 
     </main>
   )
