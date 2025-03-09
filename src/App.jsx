@@ -10,7 +10,8 @@ function App() {
   function generateAllNewDice() {
     const new_arr = []
     for(let i = 0; i < 10; i++){
-      new_arr.push(Math.floor(Math.random()*7))
+      let random = Math.floor(Math.random()*7)
+      new_arr.push({value: random, held: false})
     }
     return new_arr
   }
@@ -19,7 +20,7 @@ function App() {
     setNumbers(generateAllNewDice)
   }
 
-  const newDie = numbers.map((number) => <Die value={number}/>)
+  const newDie = numbers.map((dieObj) => <Die value={dieObj.value}/>)
 
 
 
@@ -29,7 +30,7 @@ function App() {
         {newDie}
       </div>
 
-      <button class="roll-dice" onClick={rollDice}>Roll Dice</button>
+      <button className="roll-dice" onClick={rollDice}>Roll Dice</button>
 
     </main>
   )
