@@ -7,13 +7,7 @@ function App() {
 
   const [numbers, setNumbers] = useState(generateAllNewDice)
 
-  const hold = (id) => {
-    setNumbers((prevNumbers) => 
-      prevNumbers.map((number) => 
-        number.id === id ? {...number, held: !number.held} : number
-      )
-    )
-  }
+
 
 
   function generateAllNewDice() {
@@ -30,8 +24,21 @@ function App() {
     return new_arr
   }
 
+  const hold = (id) => {
+    setNumbers((prevNumbers) => 
+      prevNumbers.map((number) => 
+        number.id === id ? {...number, held: !number.held} : number
+      )
+    )
+  }
+
   function rollDice() {
-    setNumbers(generateAllNewDice)
+    console.log(generateAllNewDice)
+    setNumbers(prevNumbers => 
+      prevNumbers.map(number =>
+        number.held ? number : {...number, value: Math.floor(Math.random()*7)}
+      )
+    )
   }
 
   const diceElements = numbers.map((dieObj) => 
