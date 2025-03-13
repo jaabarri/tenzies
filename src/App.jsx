@@ -8,7 +8,11 @@ function App() {
   const [numbers, setNumbers] = useState(generateAllNewDice)
 
   const hold = (id) => {
-    console.log(id)
+    setNumbers((prevNumbers) => 
+      prevNumbers.map((number) => 
+        number.id === id ? {...number, held: !number.held} : number
+      )
+    )
   }
 
 
