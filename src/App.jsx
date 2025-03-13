@@ -7,6 +7,10 @@ function App() {
 
   const [numbers, setNumbers] = useState(generateAllNewDice)
 
+  const hold = (id) => {
+    console.log(id)
+  }
+
 
   function generateAllNewDice() {
     const new_arr = []
@@ -32,6 +36,7 @@ function App() {
       id={dieObj.id} 
       value={dieObj.value} 
       held={dieObj.held}
+      isHeld={hold}
     />)
 
   console.log(diceElements)
