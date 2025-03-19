@@ -7,9 +7,6 @@ function App() {
 
   const [numbers, setNumbers] = useState(generateAllNewDice)
 
-
-
-
   function generateAllNewDice() {
     const new_arr = []
     for(let i = 0; i < 10; i++){
