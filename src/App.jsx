@@ -6,7 +6,7 @@ import Confetti from "react-confetti"
 function App() {
 
 
-  const [numbers, setNumbers] = useState(() => generateAllNewDice)
+  const [numbers, setNumbers] = useState(() => generateAllNewDice())
   const gameWon = numbers.every(item => item.held) && numbers.every(item => item.value === numbers[0].value)
 
 
@@ -38,12 +38,16 @@ function App() {
   }
 
   function rollDice() {
-    console.log(generateAllNewDice)
-    setNumbers(prevNumbers => 
-      prevNumbers.map(number =>
-        number.held ? number : {...number, value: Math.floor(Math.random()*7)}
+    if(!gameWon) {
+      console.log(generateAllNewDice)
+      setNumbers(prevNumbers => 
+        prevNumbers.map(number =>
+          number.held ? number : {...number, value: Math.floor(Math.random()*7)}
+        )
       )
-    )
+    } else {
+      setNumbers(generateAllNewDice())
+    }
   }
 
   const diceElements = numbers.map((dieObj) => 
