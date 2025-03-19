@@ -6,7 +6,7 @@ import Confetti from "react-confetti"
 function App() {
 
 
-  const [numbers, setNumbers] = useState(generateAllNewDice)
+  const [numbers, setNumbers] = useState(() => generateAllNewDice)
   const gameWon = numbers.every(item => item.held) && numbers.every(item => item.value === numbers[0].value)
 
 
